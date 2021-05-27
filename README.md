@@ -17,7 +17,9 @@ Supported Currently:
 ## Developer Usage
 This mod is actually a library and thus is mostly going to be used
 by mod developers. You should know the following if you are a developer.
-For more information please see the ~~WIKI~~(Its currently being setup...)
+For more information please see the [Quick-Start Guide](https://github.com/BlazeCodeNet/VanillifyMod/wiki/Quick-Start-Guide)
+on our wiki!
+
 #### Key Terms
 * **Representation** - A representation is a vanilla block or item(depending on use case) that will
 be used to represent your modded block/item to vanilla clients!
