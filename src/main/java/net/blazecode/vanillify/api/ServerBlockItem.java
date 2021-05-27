@@ -13,18 +13,18 @@ import net.minecraft.util.Identifier;
 
 public class ServerBlockItem extends BlockItem implements ItemStackProxy
 {
-    public ServerBlockItem( Block block, Item representation, Identifier id, Settings settings, Text customName )
+    public ServerBlockItem( Block block, Item representation, Identifier identifier, Settings settings, Text displayName )
     {
         super( block, settings );
-        rep = representation;
-        ident = id;
-        displayName = customName;
+        this.representation = representation;
+        this.identifier = identifier;
+        this.displayName = displayName;
     }
     
     @Override
     public ItemStack getClientItemStack( ItemStack original )
     {
-        ItemStack changed = new ItemStack(rep);
+        ItemStack changed = new ItemStack(representation);
         changed.setCount(original.getCount());
         changed.setCustomName( getServerSideName() );
         return changed;
@@ -34,7 +34,7 @@ public class ServerBlockItem extends BlockItem implements ItemStackProxy
     @Override
     public Identifier getId ( )
     {
-        return ident;
+        return identifier;
     }
     
     @Override
@@ -58,7 +58,7 @@ public class ServerBlockItem extends BlockItem implements ItemStackProxy
     
     public Item getRepresentationItem()
     {
-        return rep;
+        return representation;
     }
     
     public Text getServerSideName()
@@ -66,8 +66,8 @@ public class ServerBlockItem extends BlockItem implements ItemStackProxy
         return displayName;
     }
     
-    private Item rep;
-    private Identifier ident;
+    private Item representation;
+    private Identifier identifier;
     private Text displayName;
     
 }

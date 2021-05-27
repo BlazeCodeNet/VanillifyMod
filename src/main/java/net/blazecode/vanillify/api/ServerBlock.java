@@ -9,30 +9,29 @@ import net.minecraft.util.Identifier;
 
 public class ServerBlock extends Block implements BlockStateProxy
 {
-    public ServerBlock( Block representation, Identifier realIdent, Settings settings, Text customName )
+    public ServerBlock( Block representation, Identifier identifier, Settings settings, Text displayName )
     {
         super( settings );
-        rep = representation;
-        ident = realIdent;
-        displayName = customName;
+        this.representation = representation;
+        this.identifier = identifier;
+        this.displayName = displayName;
     }
     
     @Override
     public BlockState getClientBlockState( BlockState original )
     {
-        BlockState ret = rep.getDefaultState();
-        return ret;
+        return representation.getDefaultState();
     }
     
     @Override
     public Identifier getId( )
     {
-        return ident;
+        return identifier;
     }
     
     public Text getDisplayName ( )
     {
-        if(displayName==null)
+        if( displayName==null )
         {
             return super.getName();
         }
@@ -42,7 +41,7 @@ public class ServerBlock extends Block implements BlockStateProxy
         }
     }
     
-    private Block rep;
-    private Identifier ident;
+    private Block representation;
+    private Identifier identifier;
     private Text displayName;
 }
