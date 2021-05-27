@@ -16,11 +16,6 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
-
-	maven {
-		url "http://maven.blazecode.net"
-		allowInsecureProtocol true
-	}
 }
 
 dependencies {
@@ -34,8 +29,11 @@ dependencies {
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
-	modImplementation "blazecode:vanillify:${project.vanillify_version}"
 	modImplementation 'net.luckperms:api:5.3'
+
+
+	// NOTICE: Use the following line in your mod to be able to include Vanillify!
+	// modImplementation "blazecode:vanillify:${project.vanillify_version}"
 }
 
 processResources {
@@ -95,6 +93,6 @@ publishing {
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
-		// mavenLocal()
+		mavenLocal()
 	}
 }
