@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "vanillify",
   "version": "${version}",
 
   "name": "Vanillify",
@@ -11,7 +11,7 @@
   ],
   "contact": {
     "homepage": "https://github.com/BlazeCodeNet",
-    "sources": "https://github.com/BlazeCodeNet/VanillifyMod"
+    "sources": "https://github.com/BlazeCodeNet/anillifyMod"
   },
 
   "license": "CC0-1.0",
@@ -20,7 +20,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "nnet.blazecode.vanillify.VanillifyMod"
+      "net.blazecode.vanillify.VanillifyMod"
     ]
   },
   "mixins": [
