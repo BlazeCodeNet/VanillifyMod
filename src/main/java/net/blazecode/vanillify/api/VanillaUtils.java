@@ -4,6 +4,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
+import net.minecraft.nbt.NbtString;
 import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
@@ -13,6 +14,7 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -44,6 +46,24 @@ public class VanillaUtils
         skullTag.putUuid( "Id", UUID.randomUUID() );
         
         return buffStack;
+    }
+    // /give @p minecraft:carved_pumpkin{display:{Name:"{\"text\":\"Name here\"}",Lore:["{\"text\":\"Text for lore line\"}"] 1}}
+    public static ItemStack setItemLore(ItemStack stack, List<Text> lores)
+    {
+        NbtCompound dispCompound = stack.getOrCreateSubTag( "display" );
+        
+        NbtList loreListTag = new NbtList();
+        
+        for(Text t : lores)
+        {
+            loreListTag.add(NbtString.of(Text.Serializer.toJson(t)));
+        }
+        
+        dispCompound.put( "Lore", loreListTag );
+    
+        //stack.putSubTag( "display", dispCompound );
+        
+        return stack;
     }
     
     public static Text getGenericResponse(GenericResponseTypes type)

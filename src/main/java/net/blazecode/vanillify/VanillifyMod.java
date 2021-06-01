@@ -2,8 +2,6 @@ package net.blazecode.vanillify;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
-import net.luckperms.api.LuckPerms;
-import net.luckperms.api.LuckPermsProvider;
 
 import java.util.logging.Logger;
 
@@ -16,7 +14,7 @@ public class VanillifyMod implements ModInitializer
         {
             if (server.isDedicated())
             {
-                luckperms = LuckPermsProvider.get();
+                
             }
         });
     }
@@ -34,6 +32,4 @@ public class VanillifyMod implements ModInitializer
     {
         screenDebugEnabled = true;
     }
-    
-    public static LuckPerms luckperms;
 }

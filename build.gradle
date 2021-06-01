@@ -29,7 +29,6 @@ dependencies {
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
-	modImplementation 'net.luckperms:api:5.3'
 
 
 	// NOTICE: Use the following line in your mod to be able to include Vanillify!
