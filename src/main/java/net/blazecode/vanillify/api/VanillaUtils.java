@@ -1,9 +1,9 @@
 package net.blazecode.vanillify.api;
 
-import net.blazecode.vanillify.VanillifyMod;
-import net.luckperms.api.cacheddata.CachedPermissionData;
-import net.luckperms.api.model.user.User;
-import net.luckperms.api.util.Tristate;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
@@ -12,10 +12,9 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class VanillaUtils
 {
@@ -28,22 +27,23 @@ public class VanillaUtils
         player.networkHandler.sendPacket( new PlaySoundS2CPacket(event, SoundCategory.PLAYERS, player.getPos().x, player.getPos().y, player.getPos().z, vol, pitch));
     }
     
-    public static boolean checkPermission( ServerPlayerEntity player, String permissionNode )
+    public static ItemStack getHeadFromRaw( String rawId )
     {
-        if( Objects.requireNonNull( player.getServer( ) ).isDedicated() )
-        {
-            User permUser = VanillifyMod.luckperms.getUserManager( ).getUser( player.getUuid() );
-            if(permUser!=null)
-            {
-                CachedPermissionData permData = permUser.getCachedData( ).getPermissionData();
-                
-                Tristate checkResult = permData.checkPermission(permissionNode);
-                
-                return checkResult.asBoolean();
-            }
-        }
+        ItemStack buffStack = new ItemStack( Items.PLAYER_HEAD );
+        NbtCompound skullTag = buffStack.getOrCreateSubTag( "SkullOwner" );
         
-        return false;
+        NbtCompound propertiesTag = new NbtCompound();
+        NbtList texturesTag = new NbtList();
+        NbtCompound textureValue = new NbtCompound();
+        
+        textureValue.putString("Value", rawId);
+        
+        texturesTag.add(textureValue);
+        propertiesTag.put("textures", texturesTag);
+        skullTag.put("Properties", propertiesTag);
+        skullTag.putUuid( "Id", UUID.randomUUID() );
+        
+        return buffStack;
     }
     
     public static Text getGenericResponse(GenericResponseTypes type)
