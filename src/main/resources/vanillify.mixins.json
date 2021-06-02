@@ -2,8 +2,16 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.blazecode.vanillify.mixins",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "crafting.ShapedRecipeMixin",
+    "mapping.ArrayPaletteMixin",
+    "mapping.BiMapPaletteMixin",
+    "packets.BlockUpdatePacketMixin",
+    "packets.ChunkDeltaPacketMixin",
+    "packets.PacketByteBuffMixin",
+    "packets.SyncRecipesPacketMixin",
+    "packets.entity.MobSpawnS2CPacketMixin"
   ],
   "client": [
   ],

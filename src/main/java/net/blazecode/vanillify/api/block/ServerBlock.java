@@ -1,4 +1,4 @@
-package net.blazecode.vanillify.api;
+package net.blazecode.vanillify.api.block;
 
 import net.blazecode.vanillify.api.interfaces.BlockStateProxy;
 import net.minecraft.block.Block;

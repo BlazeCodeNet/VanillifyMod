@@ -11,7 +11,7 @@
   ],
   "contact": {
     "homepage": "https://github.com/BlazeCodeNet",
-    "sources": "https://github.com/BlazeCodeNet/anillifyMod"
+    "sources": "https://github.com/BlazeCodeNet/VanillifyMod"
   },
 
   "license": "CC0-1.0",
@@ -19,7 +19,7 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [
+    "server": [
       "net.blazecode.vanillify.VanillifyMod"
     ]
   },

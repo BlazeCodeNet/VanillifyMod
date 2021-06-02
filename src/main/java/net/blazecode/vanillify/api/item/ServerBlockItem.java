@@ -1,8 +1,9 @@
-package net.blazecode.vanillify.api;
+package net.blazecode.vanillify.api.item;
 
 import net.blazecode.vanillify.api.gui.ServerScreenHandler;
 import net.blazecode.vanillify.api.interfaces.ItemStackProxy;
-import net.minecraft.enchantment.Enchantments;
+import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.LiteralText;
@@ -10,31 +11,30 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
-public class ServerItem extends Item implements ItemStackProxy
+public class ServerBlockItem extends BlockItem implements ItemStackProxy
 {
-    
-    public ServerItem( Item representation, Identifier identifier, Item.Settings settings, Text clientSideName)
+    public ServerBlockItem( Block block, Item representation, Identifier identifier, Settings settings, Text displayName )
     {
-        super( settings );
-        rep = representation;
-        ident = identifier;
-        displayName = clientSideName;
+        super( block, settings );
+        this.representation = representation;
+        this.identifier = identifier;
+        this.displayName = displayName;
     }
     
     @Override
-    public ItemStack getClientItemStack ( ItemStack original )
+    public ItemStack getClientItemStack( ItemStack original )
     {
-        ItemStack changed = new ItemStack(rep);
+        ItemStack changed = new ItemStack(representation);
         changed.setCount(original.getCount());
         changed.setCustomName( getServerSideName() );
-        changed.addEnchantment( Enchantments.UNBREAKING, 1 );
         return changed;
     }
+    
     
     @Override
     public Identifier getId ( )
     {
-        return ident;
+        return identifier;
     }
     
     @Override
@@ -56,17 +56,18 @@ public class ServerItem extends Item implements ItemStackProxy
         }
     }
     
+    public Item getRepresentationItem()
+    {
+        return representation;
+    }
+    
     public Text getServerSideName()
     {
         return displayName;
     }
     
-    public Item getRepresentationItem()
-    {
-        return rep;
-    }
-    
-    private Item rep;
-    private Identifier ident;
+    private Item representation;
+    private Identifier identifier;
     private Text displayName;
+    
 }

@@ -1,7 +1,6 @@
 package net.blazecode.vanillify.mixins.packets;
 
 import it.unimi.dsi.fastutil.shorts.ShortSet;
-import net.blazecode.vanillify.api.ServerBlock;
 import net.blazecode.vanillify.api.interfaces.BlockStateProxy;
 import net.minecraft.block.BlockState;
 import net.minecraft.network.Packet;

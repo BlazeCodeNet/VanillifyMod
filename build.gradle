@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.7-SNAPSHOT'
+	id 'fabric-loom' version '0.8-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -29,10 +29,6 @@ dependencies {
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
-
-
-	// NOTICE: Use the following line in your mod to be able to include Vanillify!
-	// modImplementation "blazecode:vanillify:${project.vanillify_version}"
 }
 
 processResources {

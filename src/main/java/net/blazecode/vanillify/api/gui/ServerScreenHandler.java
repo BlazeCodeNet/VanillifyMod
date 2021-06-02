@@ -47,12 +47,9 @@ public abstract class ServerScreenHandler extends ScreenHandler
             this.addSlot(new Slot(playerInventory, n, 8 + n * 18, 161 + i));
         }
         
-        markAllDirty();
         playerInventory.player.currentScreenHandler.sendContentUpdates();
         
     }
-    
-    protected abstract void markAllDirty();
     
     private static ScreenHandlerType<GenericContainerScreenHandler> fromRows( int rows)
     {
@@ -95,16 +92,9 @@ public abstract class ServerScreenHandler extends ScreenHandler
             if (slotId < 0)
                 return;
             Slot slot = this.slots.get(slotId);
-            if (this.isAllowedSlot(slotId))
+            if(this.handleAllowedClick( srvPlr, slotId, slot, j ))
             {
-                if(this.handleAllowedClick( srvPlr, slotId, slot, j ))
-                {
-                    // Cancel click
-                    shouldCancel = true;
-                }
-            }
-            else
-            {
+                // Cancel click
                 shouldCancel = true;
             }
             
@@ -141,8 +131,6 @@ public abstract class ServerScreenHandler extends ScreenHandler
             this.sendContentUpdates();
         }
     }
-    
-    protected abstract boolean isAllowedSlot(int slot);
     
     /**
      * @param clickType 0 for left click, 1 for right click

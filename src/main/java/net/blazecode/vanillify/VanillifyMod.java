@@ -1,20 +1,21 @@
 package net.blazecode.vanillify;
 
+import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 
 import java.util.logging.Logger;
 
-public class VanillifyMod implements ModInitializer
+public class VanillifyMod implements DedicatedServerModInitializer
 {
     @Override
-    public void onInitialize()
+    public void onInitializeServer( )
     {
         ServerLifecycleEvents.SERVER_STARTED.register( server ->
         {
             if (server.isDedicated())
             {
-                
+            
             }
         });
     }
@@ -32,4 +33,5 @@ public class VanillifyMod implements ModInitializer
     {
         screenDebugEnabled = true;
     }
+    
 }
