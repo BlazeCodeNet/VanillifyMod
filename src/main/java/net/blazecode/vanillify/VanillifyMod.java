@@ -11,13 +11,7 @@ public class VanillifyMod implements DedicatedServerModInitializer
     @Override
     public void onInitializeServer( )
     {
-        ServerLifecycleEvents.SERVER_STARTED.register( server ->
-        {
-            if (server.isDedicated())
-            {
-            
-            }
-        });
+
     }
     
     public static final String MODID = "vanillify";
