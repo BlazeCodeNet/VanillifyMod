@@ -32,7 +32,7 @@ public class VanillaUtils
     public static ItemStack getHeadFromRaw( String rawId )
     {
         ItemStack buffStack = new ItemStack( Items.PLAYER_HEAD );
-        NbtCompound skullTag = buffStack.getOrCreateSubTag( "SkullOwner" );
+        NbtCompound skullTag = buffStack.getOrCreateSubNbt( "SkullOwner" );
         
         NbtCompound propertiesTag = new NbtCompound();
         NbtList texturesTag = new NbtList();
@@ -50,7 +50,7 @@ public class VanillaUtils
     // /give @p minecraft:carved_pumpkin{display:{Name:"{\"text\":\"Name here\"}",Lore:["{\"text\":\"Text for lore line\"}"] 1}}
     public static ItemStack setItemLore(ItemStack stack, List<Text> lores)
     {
-        NbtCompound dispCompound = stack.getOrCreateSubTag( "display" );
+        NbtCompound dispCompound = stack.getOrCreateSubNbt( "display" );
         
         NbtList loreListTag = new NbtList();
         
