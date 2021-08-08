@@ -13,6 +13,7 @@ Supported Currently:
 * **Block Entities** - Modded blocks WITH block entities are mostly supported.
 * **Chest GUI** - Chest GUI are mostly supported.
 * **Crafting Recipes** - Crafting recipes for the modded items and/or blocks are supported.
+* **Entities** - Completely modded entities are supported.
 
 ## Developer Usage
 This mod is actually a library and thus is mostly going to be used
