@@ -60,8 +60,6 @@ public class VanillaUtils
         }
         
         dispCompound.put( "Lore", loreListTag );
-    
-        //stack.putSubTag( "display", dispCompound );
         
         return stack;
     }

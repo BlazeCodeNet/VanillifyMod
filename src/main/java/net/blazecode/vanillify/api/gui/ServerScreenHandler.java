@@ -91,8 +91,7 @@ public abstract class ServerScreenHandler extends ScreenHandler
             
             if (slotId < 0)
                 return;
-            Slot slot = this.slots.get(slotId);
-            if(this.handleAllowedClick( srvPlr, slotId, slot, j ))
+            if(!this.handleAllowedClick( srvPlr, slotId, j ))
             {
                 // Cancel click
                 shouldCancel = true;
@@ -109,7 +108,7 @@ public abstract class ServerScreenHandler extends ScreenHandler
                 return;
             }
             
-            ItemStack stack = slot.getStack().copy();
+            ItemStack stack = inventory.getStack(slotId);
             for (ScreenHandlerListener listener : this.listeners)
                 listener.onSlotUpdate(this, slotId, stack);
             
@@ -127,7 +126,6 @@ public abstract class ServerScreenHandler extends ScreenHandler
         if (!this.listeners.contains(listener))
         {
             this.listeners.add(listener);
-            //listener.onHandlerRegistered(this, this.getStacks());
             this.sendContentUpdates();
         }
     }
@@ -136,7 +134,7 @@ public abstract class ServerScreenHandler extends ScreenHandler
      * @param clickType 0 for left click, 1 for right click
      * @return Returns if the click should be canceled (true = cancel)
      */
-    protected abstract boolean handleAllowedClick(ServerPlayerEntity player, int index, Slot slot, int clickType);
+    protected abstract boolean handleAllowedClick(ServerPlayerEntity player, int index, int clickType);
     
     public static ItemStack getFillerItem()
     {
