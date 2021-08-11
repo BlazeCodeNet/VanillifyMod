@@ -111,13 +111,7 @@ public abstract class ServerScreenHandler extends ScreenHandler
             ItemStack stack = inventory.getStack(slotId);
             for (ScreenHandlerListener listener : this.listeners)
                 listener.onSlotUpdate(this, slotId, stack);
-            
-            srvPlr.currentScreenHandler.setCursorStack( ItemStack.EMPTY );
-            
-            return;
         }
-        
-        return;
     }
     
     @Override
