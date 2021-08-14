@@ -43,10 +43,6 @@ Some notable known issues are:
 * **Block Breaking Speed** - If you have a different block breaking speed than your representative vanilla
   block, the client will appear to glitch when mining your modded block, sometimes horribly.
   We highly encurage you to find representative blocks that match your intended mining speed.
-* **Unreliable GUI Support** - There is a known bug with chest GUI support that will repeatedly make
-  some GUI's made with this mod not stop the client taking things out of the GUI.
-  We arnt sure quite yet what the cause of this is, but do know that it is an entirely
-  client-side visual glitch, and no items are actually being taken from the GUI.
 
 ## License
 Vanillify is licensed under the permissive MIT license. Please see [`LICENSE.txt`](https://github.com/lucko/LuckPerms/blob/master/LICENSE.txt) for more info.
