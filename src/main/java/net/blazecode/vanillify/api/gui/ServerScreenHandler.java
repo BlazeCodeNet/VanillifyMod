@@ -77,7 +77,7 @@ public abstract class ServerScreenHandler extends ScreenHandler
     }
     
     @Override
-    public void onSlotClick( int slotId, int j, SlotActionType actionType, PlayerEntity playerEntity)
+    public void onSlotClick( int slotId, int button, SlotActionType actionType, PlayerEntity playerEntity)
     {
         if(!playerEntity.world.isClient)
         {
@@ -86,12 +86,12 @@ public abstract class ServerScreenHandler extends ScreenHandler
             
             if( VanillifyMod.isScreenDebugEnabled() )
             {
-                VanillifyMod.LOGGER.info( "ClickSlot:"+slotId+";j="+j );
+                VanillifyMod.LOGGER.info( "ClickSlot:"+slotId+";button="+button );
             }
             
             if (slotId < 0)
                 return;
-            if(!this.handleAllowedClick( srvPlr, slotId, j ))
+            if(!this.handleAllowedClick( srvPlr, slotId, (button == 0 ? CLICK_BUTTON.LEFT : CLICK_BUTTON.RIGHT), actionType ))
             {
                 // Cancel click
                 shouldCancel = true;
@@ -104,7 +104,7 @@ public abstract class ServerScreenHandler extends ScreenHandler
             
             if(!shouldCancel)
             {
-                super.onSlotClick(slotId, j, actionType, playerEntity);
+                super.onSlotClick(slotId, button, actionType, playerEntity);
                 return;
             }
             
@@ -123,12 +123,8 @@ public abstract class ServerScreenHandler extends ScreenHandler
             this.sendContentUpdates();
         }
     }
-    
-    /**
-     * @param clickType 0 for left click, 1 for right click
-     * @return Returns if the click should be canceled (true = cancel)
-     */
-    protected abstract boolean handleAllowedClick(ServerPlayerEntity player, int index, int clickType);
+
+    protected abstract boolean handleAllowedClick(ServerPlayerEntity player, int slotIndex, CLICK_BUTTON button, SlotActionType actionType);
     
     public static ItemStack getFillerItem()
     {

@@ -24,6 +24,7 @@ public class VanillaUtils
     {
         return new LiteralText(text).setStyle( Style.EMPTY.withItalic(false).withFormatting(formattings));
     }
+
     public static void playSoundToPlayer( ServerPlayerEntity player, SoundEvent event, float vol, float pitch)
     {
         player.networkHandler.sendPacket( new PlaySoundS2CPacket(event, SoundCategory.PLAYERS, player.getPos().x, player.getPos().y, player.getPos().z, vol, pitch));
@@ -47,8 +48,15 @@ public class VanillaUtils
         
         return buffStack;
     }
-    // /give @p minecraft:carved_pumpkin{display:{Name:"{\"text\":\"Name here\"}",Lore:["{\"text\":\"Text for lore line\"}"] 1}}
-    public static ItemStack setItemLore(ItemStack stack, List<Text> lores)
+
+    public static void setStackModelData(ItemStack stack, int id)
+    {
+        NbtCompound stackTag = stack.getOrCreateNbt(  );
+
+        stackTag.putInt("CustomModelData", id);
+    }
+
+    public static void setStackLore(ItemStack stack, List<Text> lores)
     {
         NbtCompound dispCompound = stack.getOrCreateSubNbt( "display" );
         
@@ -60,8 +68,6 @@ public class VanillaUtils
         }
         
         dispCompound.put( "Lore", loreListTag );
-        
-        return stack;
     }
     
     public static Text getGenericResponse(GenericResponseTypes type)

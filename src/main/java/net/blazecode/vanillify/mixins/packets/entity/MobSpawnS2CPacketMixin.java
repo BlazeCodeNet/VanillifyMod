@@ -1,6 +1,7 @@
 package net.blazecode.vanillify.mixins.packets.entity;
 
 import net.blazecode.vanillify.api.entity.ServerEntity;
+import net.blazecode.vanillify.api.interfaces.EntityTypeProxy;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.network.Packet;
@@ -16,11 +17,11 @@ public abstract class MobSpawnS2CPacketMixin implements Packet<ClientPlayPacketL
     @Redirect( method = "<init>(Lnet/minecraft/entity/LivingEntity;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getType()Lnet/minecraft/entity/EntityType;") )
     EntityType getEntityTypeProxy( LivingEntity livingEntity )
     {
-        if( livingEntity instanceof ServerEntity )
+        if( livingEntity instanceof EntityTypeProxy )
         {
-            ServerEntity serverEntity = (ServerEntity) livingEntity;
+            EntityTypeProxy entityTypeProxy = (EntityTypeProxy) livingEntity;
             
-            return serverEntity.getRepresentation();
+            return entityTypeProxy.getRepresentation(livingEntity);
         }
         
         return livingEntity.getType();
