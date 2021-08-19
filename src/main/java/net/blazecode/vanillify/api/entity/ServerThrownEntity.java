@@ -1,24 +1,21 @@
 package net.blazecode.vanillify.api.entity;
 
 import net.blazecode.vanillify.api.interfaces.EntityTypeProxy;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 public class ServerThrownEntity extends ThrownItemEntity implements EntityTypeProxy
 {
-    public ServerThrownEntity(EntityType<? extends ServerThrownEntity> entityType, World world, Identifier identifier, Item shownItem)
+    public ServerThrownEntity(EntityType<Entity> entityType, World world)
     {
-        super(entityType, world);
-        this.shownItem = shownItem;
-        this.identifier = identifier;
+        super((EntityType) entityType, world);
     }
-
-    private final Item shownItem;
-    private final Identifier identifier;
 
     @Override
     public EntityType getRepresentation(LivingEntity original)
@@ -29,12 +26,12 @@ public class ServerThrownEntity extends ThrownItemEntity implements EntityTypePr
     @Override
     public Identifier getIdentifier()
     {
-        return identifier;
+        return null;
     }
 
     @Override
     protected Item getDefaultItem()
     {
-        return shownItem;
+        return Items.SLIME_BALL;
     }
 }

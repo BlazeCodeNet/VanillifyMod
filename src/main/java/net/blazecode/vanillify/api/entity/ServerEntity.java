@@ -1,6 +1,7 @@
 package net.blazecode.vanillify.api.entity;
 
 import net.blazecode.vanillify.api.interfaces.EntityTypeProxy;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.decoration.ArmorStandEntity;
@@ -21,25 +22,20 @@ public class ServerEntity extends ArmorStandEntity implements EntityTypeProxy
         return true;
     }
     
-    public ServerEntity( EntityType<? extends ServerEntity> type, World world, Identifier identifier, EntityType representation )
+    public ServerEntity(EntityType<Entity> type, World world )
     {
-        super( type, world );
-        this.representation = representation;
-        this.identifier = identifier;
+        super((EntityType) type, world );
     }
-    
-    private final EntityType representation;
-    private final Identifier identifier;
 
     @Override
     public EntityType getRepresentation(LivingEntity original)
     {
-        return representation;
+        return EntityType.SNOWBALL;
     }
 
     @Override
     public Identifier getIdentifier()
     {
-        return identifier;
+        return null;
     }
 }
