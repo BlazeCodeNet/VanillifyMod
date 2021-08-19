@@ -4,34 +4,29 @@ import net.blazecode.vanillify.api.interfaces.EntityTypeProxy;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
-public class ServerThrownEntity extends ThrownItemEntity implements EntityTypeProxy
+public class ServerThrownEntity extends SnowballEntity implements EntityTypeProxy
 {
-    public ServerThrownEntity(EntityType<Entity> entityType, World world)
+    public ServerThrownEntity(EntityType<? extends ServerThrownEntity> entityType, World world)
     {
-        super((EntityType) entityType, world);
+        super(entityType, world);
     }
 
     @Override
-    public EntityType getRepresentation(LivingEntity original)
+    public EntityType getRepresentation()
     {
         return EntityType.SNOWBALL;
     }
 
     @Override
-    public Identifier getIdentifier()
-    {
-        return null;
-    }
-
-    @Override
     protected Item getDefaultItem()
     {
-        return Items.SLIME_BALL;
+        return Items.BEDROCK;
     }
 }

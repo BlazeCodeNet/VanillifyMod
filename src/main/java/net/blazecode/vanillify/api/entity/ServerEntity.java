@@ -22,20 +22,14 @@ public class ServerEntity extends ArmorStandEntity implements EntityTypeProxy
         return true;
     }
     
-    public ServerEntity(EntityType<Entity> type, World world )
+    public ServerEntity(EntityType<? extends ServerEntity> type, World world )
     {
-        super((EntityType) type, world );
+        super(type, world );
     }
 
     @Override
-    public EntityType getRepresentation(LivingEntity original)
+    public EntityType getRepresentation()
     {
-        return EntityType.SNOWBALL;
-    }
-
-    @Override
-    public Identifier getIdentifier()
-    {
-        return null;
+        return EntityType.ARMOR_STAND;
     }
 }

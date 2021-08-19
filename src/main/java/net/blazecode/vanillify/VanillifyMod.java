@@ -1,10 +1,11 @@
 package net.blazecode.vanillify;
 
 import net.blazecode.vanillify.commands.VanillaCommand;
+import net.blazecode.vanillify.testing.TestEntity;
+import net.blazecode.vanillify.testing.TestRegistery;
 import net.fabricmc.api.DedicatedServerModInitializer;
-import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.minecraft.entity.EntityType;
 
 import java.util.logging.Logger;
 
@@ -20,6 +21,8 @@ public class VanillifyMod implements DedicatedServerModInitializer
                 VanillaCommand.register(dispatcher);
             }
         });
+
+        TestRegistery.init();
     }
     
     public static final String MODID = "vanillify";

@@ -21,7 +21,7 @@ public abstract class MobSpawnS2CPacketMixin implements Packet<ClientPlayPacketL
         {
             EntityTypeProxy entityTypeProxy = (EntityTypeProxy) livingEntity;
             
-            return entityTypeProxy.getRepresentation(livingEntity);
+            return entityTypeProxy.getRepresentation();
         }
         
         return livingEntity.getType();

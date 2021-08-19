@@ -11,6 +11,7 @@
     "packets.ChunkDeltaPacketMixin",
     "packets.PacketByteBuffMixin",
     "packets.SyncRecipesPacketMixin",
+    "packets.entity.EntitySpawnS2CPacketMixin",
     "packets.entity.MobSpawnS2CPacketMixin"
   ],
   "client": [

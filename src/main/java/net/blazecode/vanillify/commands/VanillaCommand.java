@@ -7,11 +7,16 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.blazecode.vanillify.api.VanillaUtils;
+import net.blazecode.vanillify.testing.TestEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Formatting;
+
+import java.util.logging.Logger;
 
 import static net.minecraft.server.command.CommandManager.*;
 
