@@ -1,9 +1,6 @@
 package net.blazecode.vanillify.api.interfaces;
 
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.Identifier;
 
 public interface EntityTypeProxy
 {

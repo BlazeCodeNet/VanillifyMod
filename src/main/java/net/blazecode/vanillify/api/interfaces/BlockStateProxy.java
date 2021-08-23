@@ -1,7 +1,6 @@
 package net.blazecode.vanillify.api.interfaces;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 public interface BlockStateProxy

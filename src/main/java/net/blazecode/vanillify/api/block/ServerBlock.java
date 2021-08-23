@@ -3,7 +3,6 @@ package net.blazecode.vanillify.api.block;
 import net.blazecode.vanillify.api.interfaces.BlockStateProxy;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 

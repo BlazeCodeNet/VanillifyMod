@@ -1,6 +1,5 @@
 package net.blazecode.vanillify.mixins.packets.entity;
 
-import net.blazecode.vanillify.api.entity.ServerEntity;
 import net.blazecode.vanillify.api.interfaces.EntityTypeProxy;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;

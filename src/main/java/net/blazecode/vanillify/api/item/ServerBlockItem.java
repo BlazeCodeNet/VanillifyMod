@@ -1,14 +1,11 @@
 package net.blazecode.vanillify.api.item;
 
-import net.blazecode.vanillify.api.gui.ServerScreenHandler;
 import net.blazecode.vanillify.api.interfaces.ItemStackProxy;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
 public class ServerBlockItem extends BlockItem implements ItemStackProxy

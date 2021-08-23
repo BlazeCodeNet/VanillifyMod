@@ -1,6 +1,5 @@
 package net.blazecode.vanillify.mixins.packets;
 
-import net.blazecode.vanillify.api.interfaces.ItemStackProxy;
 import net.blazecode.vanillify.api.interfaces.RecipeProviderProxy;
 import net.minecraft.network.Packet;
 import net.minecraft.network.PacketByteBuf;

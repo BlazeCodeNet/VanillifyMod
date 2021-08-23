@@ -3,7 +3,6 @@ package net.blazecode.vanillify;
 import net.blazecode.vanillify.commands.VanillaCommand;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
-import net.minecraft.entity.EntityType;
 
 import java.util.logging.Logger;
 
