@@ -43,6 +43,9 @@ Some notable known issues are:
 * **Block Breaking Speed** - If you have a different block breaking speed than your representative vanilla
   block, the client will appear to glitch when mining your modded block, sometimes horribly.
   We highly encurage you to find representative blocks that match your intended mining speed.
+  
+## Examples
+You can view examples in the wiki [page](https://github.com/BlazeCodeNet/VanillifyMod/wiki/Mods-made-using-Vanillify) showcasing mods that use Vanillify.
 
 ## License
 Vanillify is licensed under the permissive MIT license. Please see [`LICENSE.txt`](https://github.com/lucko/LuckPerms/blob/master/LICENSE.txt) for more info.
