@@ -5,7 +5,6 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "crafting.ShapedRecipeMixin",
-    "ents.ServerPlayerMixin",
     "mapping.ArrayPaletteMixin",
     "mapping.BiMapPaletteMixin",
     "packets.BlockUpdatePacketMixin",
