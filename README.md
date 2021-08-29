@@ -10,7 +10,7 @@ Supported Currently:
 
 * **Items** - Completely modded items are supported.
 * **Blocks** - Completely modded blocks are supported.
-* **Block Entities** - Modded blocks WITH block entities are mostly supported.
+* **Block Entities** - Modded blocks WITH block entities are supported.
 * **Chest GUI** - Chest GUI are mostly supported.
 * **Crafting Recipes** - Crafting recipes for the modded items and/or blocks are supported.
 * **Entities** - Completely modded entities are supported.
@@ -29,7 +29,6 @@ be used to represent your modded block/item to vanilla clients!
 ## Project Goals
 This project is in VERY early stages. Some things planned in the near future are:
 
-* **Entity Support** - This would allow modded entities that look like vanilla entities to the client.
 * **WTHIT-Mod Support** - Allowing support for the [WTHIT](https://github.com/badasintended/wthit) mod on clients with the mod installed is a key priority.
 * **Pucking** - A term stolen from the [PolyPuck](https://github.com/TheEpicBlock/PolyPuck) project, it would allow vanilla clients to connect, but would also allow clients that connect WITH the client mod installed to see the modded things instead of their vanilla representations.  
 
@@ -43,9 +42,3 @@ Some notable known issues are:
 * **Block Breaking Speed** - If you have a different block breaking speed than your representative vanilla
   block, the client will appear to glitch when mining your modded block, sometimes horribly.
   We highly encurage you to find representative blocks that match your intended mining speed.
-  
-## Examples
-You can view examples in the wiki [page](https://github.com/BlazeCodeNet/VanillifyMod/wiki/Mods-made-using-Vanillify) showcasing mods that use Vanillify.
-
-## License
-Vanillify is licensed under the permissive MIT license. Please see [`LICENSE.txt`](https://github.com/lucko/LuckPerms/blob/master/LICENSE.txt) for more info.
