@@ -19,5 +19,5 @@ public interface BlockStateProxy
      *
      * @return
      */
-    public Identifier getId();
+    public Identifier getIdentifier();
 }

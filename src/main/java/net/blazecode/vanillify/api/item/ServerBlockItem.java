@@ -29,7 +29,7 @@ public class ServerBlockItem extends BlockItem implements ItemStackProxy
     
     
     @Override
-    public Identifier getId ( )
+    public Identifier getIdentifier ( )
     {
         return identifier;
     }

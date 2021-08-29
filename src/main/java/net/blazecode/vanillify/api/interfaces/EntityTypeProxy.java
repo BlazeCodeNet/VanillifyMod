@@ -1,6 +1,7 @@
 package net.blazecode.vanillify.api.interfaces;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.util.Identifier;
 
 public interface EntityTypeProxy
 {

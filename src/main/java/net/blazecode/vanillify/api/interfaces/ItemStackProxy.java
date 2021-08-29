@@ -13,11 +13,11 @@ public interface ItemStackProxy
      * @return Vanillifed item stack
      */
     public ItemStack getClientItemStack( ItemStack original);
-    
+
     /**
      * Get the identifier that represents this item
      *
-     * @return
+     * @return Modded Identifier
      */
-    public Identifier getId();
+    public Identifier getIdentifier();
 }
