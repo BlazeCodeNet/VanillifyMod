@@ -10,6 +10,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.LiteralText;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -19,9 +20,9 @@ import java.util.UUID;
 
 public class VanillaUtils
 {
-    public static Text getText( String text, Formatting... formattings)
+    public static MutableText getText(String text, Formatting... formattings)
     {
-        return new LiteralText(text).setStyle( Style.EMPTY.withItalic(false).withFormatting(formattings));
+        return new LiteralText(text).setStyle( Style.EMPTY.withItalic(false).withFormatting(formattings) );
     }
 
     public static void playSoundToPlayer( ServerPlayerEntity player, SoundEvent event, float vol, float pitch)
