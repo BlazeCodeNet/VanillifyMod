@@ -1,12 +1,19 @@
 package net.blazecode.vanillify.api;
 
+import net.blazecode.vanillify.api.interfaces.BlockStateProxy;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.fabricmc.fabric.impl.networking.ServerSidePacketRegistryImpl;
+import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.LiteralText;
@@ -14,6 +21,8 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 import java.util.List;
 import java.util.UUID;
@@ -56,7 +65,7 @@ public class VanillaUtils
         stackTag.putInt("CustomModelData", id);
     }
 
-    public static void setStackLore(ItemStack stack, List<Text> lores)
+    public static void setStackLore(ItemStack stack, List<MutableText> lores)
     {
         NbtCompound dispCompound = stack.getOrCreateSubNbt( "display" );
         

@@ -1,6 +1,7 @@
 package net.blazecode.vanillify.api.interfaces;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.text.MutableText;
 import net.minecraft.util.Identifier;
 
 public interface BlockStateProxy
@@ -20,4 +21,6 @@ public interface BlockStateProxy
      * @return
      */
     public Identifier getIdentifier();
+
+    public String getDisplayName();
 }
