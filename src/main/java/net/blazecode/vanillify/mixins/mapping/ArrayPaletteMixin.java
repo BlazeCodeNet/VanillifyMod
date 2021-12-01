@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 @Mixin(ArrayPalette.class)
 public abstract class ArrayPaletteMixin
 {
-    @ModifyArg( method = "toPacket", at = @At(value = "INVOKE", target = "Lnet/minecraft/network/PacketByteBuf;writeVarInt(I)Lnet/minecraft/network/PacketByteBuf;", ordinal = 1), index = 0 )
+    @ModifyArg( method = "writePacket", at = @At(value = "INVOKE", target = "Lnet/minecraft/network/PacketByteBuf;writeVarInt(I)Lnet/minecraft/network/PacketByteBuf;", ordinal = 1), index = 0 )
     private int proxyBlockIDInjection(int original)
     {
         BlockState state = Block.getStateFromRawId( original );
