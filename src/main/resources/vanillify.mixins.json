@@ -10,6 +10,7 @@
     "packets.BlockUpdatePacketMixin",
     "packets.ChunkDeltaPacketMixin",
     "packets.PacketByteBuffMixin",
+    "packets.RegistrySyncManagerMixin",
     "packets.SyncRecipesPacketMixin",
     "packets.entity.EntitySpawnS2CPacketMixin",
     "packets.entity.MobSpawnS2CPacketMixin"
