@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.blazecode.vanillify.mixins",
-  "compatibilityLevel": "JAVA_16",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
     "crafting.ShapedRecipeMixin",
     "mapping.ArrayPaletteMixin",
@@ -10,6 +10,7 @@
     "packets.BlockUpdatePacketMixin",
     "packets.ChunkDeltaPacketMixin",
     "packets.PacketByteBuffMixin",
+    "packets.RegistrySyncManagerMixin",
     "packets.SyncRecipesPacketMixin",
     "packets.entity.EntitySpawnS2CPacketMixin",
     "packets.entity.MobSpawnS2CPacketMixin"
