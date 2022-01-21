@@ -1,6 +1,7 @@
 package net.blazecode.vanillify;
 
 import net.blazecode.vanillify.commands.VanillaCommand;
+import net.blazecode.vanillify.testing.TestingCommand;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.networking.v1.S2CPlayChannelEvents;
@@ -27,16 +28,4 @@ public class VanillifyMod implements DedicatedServerModInitializer
     
     public static final String MODID = "vanillify";
     public static final Logger LOGGER = Logger.getLogger( MODID );
-    
-    private static boolean screenDebugEnabled = false;
-    public static boolean isScreenDebugEnabled()
-    {
-        return screenDebugEnabled;
-    }
-    
-    public static void enableScreenDebug()
-    {
-        screenDebugEnabled = true;
-    }
-    
 }

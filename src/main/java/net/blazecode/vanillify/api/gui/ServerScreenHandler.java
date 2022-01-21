@@ -27,7 +27,7 @@ public abstract class ServerScreenHandler extends ScreenHandler
         
         int i = (rows - 4) * 18;
         this.inventory = new SimpleInventory( rows * 9 );
-        this.onInventoryFill( (ServerPlayerEntity)playerInventory.player, this.inventory );
+        this.onInitInventoryFill( (ServerPlayerEntity)playerInventory.player, this.inventory );
         
         int n, m;
         
@@ -68,7 +68,7 @@ public abstract class ServerScreenHandler extends ScreenHandler
                 return ScreenHandlerType.GENERIC_9X1;
         }
     }
-    protected abstract void onInventoryFill( ServerPlayerEntity player, Inventory inv );
+    protected abstract void onInitInventoryFill( ServerPlayerEntity player, Inventory inv );
     
     @Override
     public boolean canUse(PlayerEntity player)
@@ -76,42 +76,9 @@ public abstract class ServerScreenHandler extends ScreenHandler
         return true;
     }
     
-    @Override
-    public void onSlotClick( int slotId, int button, SlotActionType actionType, PlayerEntity playerEntity)
+    public SLOT_CLICK_RESULT checkSlotClick( int slotIndex, int button, SlotActionType actionType, ServerPlayerEntity player)
     {
-        if(!playerEntity.world.isClient)
-        {
-            ServerPlayerEntity srvPlr = (ServerPlayerEntity) playerEntity;
-            boolean shouldCancel = false;
-            
-            if( VanillifyMod.isScreenDebugEnabled() )
-            {
-                VanillifyMod.LOGGER.info( "ClickSlot:"+slotId+";button="+button );
-            }
-            
-            if (slotId < 0)
-                return;
-            if(!this.handleAllowedClick( srvPlr, slotId, (button == 0 ? CLICK_BUTTON.LEFT : CLICK_BUTTON.RIGHT), actionType ))
-            {
-                // Cancel click
-                shouldCancel = true;
-            }
-            
-            if(!allowQuickTransferClick() && actionType.equals( SlotActionType.QUICK_MOVE ))
-            {
-                shouldCancel = true;
-            }
-            
-            if(!shouldCancel)
-            {
-                super.onSlotClick(slotId, button, actionType, playerEntity);
-                return;
-            }
-            
-            ItemStack stack = inventory.getStack(slotId);
-            for (ScreenHandlerListener listener : this.listeners)
-                listener.onSlotUpdate(this, slotId, stack);
-        }
+        return SLOT_CLICK_RESULT.DENY_CLICK;
     }
     
     @Override
@@ -123,8 +90,6 @@ public abstract class ServerScreenHandler extends ScreenHandler
             this.sendContentUpdates();
         }
     }
-
-    protected abstract boolean handleAllowedClick(ServerPlayerEntity player, int slotIndex, CLICK_BUTTON button, SlotActionType actionType);
     
     public static ItemStack getFillerItem()
     {
@@ -139,11 +104,6 @@ public abstract class ServerScreenHandler extends ScreenHandler
     protected Inventory getInventory()
     {
         return inventory;
-    }
-    
-    public boolean allowQuickTransferClick()
-    {
-        return true;
     }
     
     private final Inventory inventory;

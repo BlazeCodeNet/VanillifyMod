@@ -3,10 +3,9 @@ package net.blazecode.vanillify.api.entity;
 import net.blazecode.vanillify.api.interfaces.EntityTypeProxy;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.decoration.ArmorStandEntity;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
-public class ServerEntity extends ArmorStandEntity implements EntityTypeProxy
+public class ServerBasicEntity extends ArmorStandEntity implements EntityTypeProxy
 {
     @Override
     public boolean isFireImmune( )
@@ -20,7 +19,7 @@ public class ServerEntity extends ArmorStandEntity implements EntityTypeProxy
         return true;
     }
     
-    public ServerEntity(EntityType<? extends ServerEntity> type, World world )
+    public ServerBasicEntity( EntityType<? extends ServerBasicEntity> type, World world )
     {
         super(type, world );
     }

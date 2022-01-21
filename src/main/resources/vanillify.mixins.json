@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "crafting.ShapedRecipeMixin",
+    "generic.SlotClickMixin",
     "mapping.ArrayPaletteMixin",
     "mapping.BiMapPaletteMixin",
     "packets.BlockUpdatePacketMixin",

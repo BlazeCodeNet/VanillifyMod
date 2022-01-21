@@ -22,7 +22,7 @@ public class RegistrySyncManagerMixin
 {
     @Shadow @Final private static Logger LOGGER;
     
-    @Redirect( method = "toTag", at = @At( value = "INVOKE", target = "Lnet/minecraft/util/registry/Registry;getId(Ljava/lang/Object;)Lnet/minecraft/util/Identifier;" ), require = 0 )
+    @Redirect( method = "createAndPopulateRegistryMap", at = @At( value = "INVOKE", target = "Lnet/minecraft/util/registry/Registry;getId(Ljava/lang/Object;)Lnet/minecraft/util/Identifier;" ), require = 0 )
     private static Identifier onRegistryToTag( Registry<Object> registry, Object obj, boolean isClientSync )
     {
         {
