@@ -20,8 +20,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin( RegistrySyncManager.class )
 public class RegistrySyncManagerMixin
 {
-    @Shadow @Final private static Logger LOGGER;
-    
     @Redirect( method = "createAndPopulateRegistryMap", at = @At( value = "INVOKE", target = "Lnet/minecraft/util/registry/Registry;getId(Ljava/lang/Object;)Lnet/minecraft/util/Identifier;" ), require = 0 )
     private static Identifier onRegistryToTag( Registry<Object> registry, Object obj, boolean isClientSync )
     {
@@ -35,7 +33,6 @@ public class RegistrySyncManagerMixin
                 )
             )
             {
-                LOGGER.warn( "Not syncing:" + registry.getId( obj ) );
                 return null;
             }
             return registry.getId( obj );

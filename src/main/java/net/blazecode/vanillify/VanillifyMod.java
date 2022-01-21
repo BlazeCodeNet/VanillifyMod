@@ -22,6 +22,7 @@ public class VanillifyMod implements DedicatedServerModInitializer
             if(dedicated)
             {
                 VanillaCommand.register(dispatcher);
+                TestingCommand.register( dispatcher );
             }
         });
     }

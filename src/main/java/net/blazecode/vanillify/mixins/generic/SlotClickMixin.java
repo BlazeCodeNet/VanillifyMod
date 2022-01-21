@@ -22,30 +22,32 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@Mixin( ServerPlayNetworkHandler.class )
+@Mixin( ScreenHandler.class )
 public abstract class SlotClickMixin
 {
-    @Shadow
-    public ServerPlayerEntity player;
     
-    @Redirect( method = "onClickSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/ScreenHandler;onSlotClick(IILnet/minecraft/screen/slot/SlotActionType;Lnet/minecraft/entity/player/PlayerEntity;)V") )
-    void onClickSlotInjection( ScreenHandler instance, int slotIndex, int button, SlotActionType actionType, PlayerEntity player )
+    @Inject( method = "onSlotClick", at = @At(value = "HEAD"), cancellable = true )
+    void onClickSlotInjection( int slotIndex, int button, SlotActionType actionType, PlayerEntity player, CallbackInfo ci )
     {
-        if(this.player.currentScreenHandler !=null && this.player.currentScreenHandler instanceof ServerScreenHandler && instance instanceof ServerScreenHandler )
+        if(player.world.isClient)
         {
-            ServerScreenHandler serverScreenHandler = (ServerScreenHandler ) this.player.currentScreenHandler;
+            return;
+        }
+        if( player.currentScreenHandler instanceof ServerScreenHandler )
+        {
+            ServerScreenHandler serverScreenHandler = (ServerScreenHandler ) player.currentScreenHandler;
             ClickType clickType = button == 0 ? ClickType.LEFT : ClickType.RIGHT;
             
-            SLOT_CLICK_RESULT clickResult = serverScreenHandler.checkSlotClick( slotIndex, button, actionType, this.player );
+            SLOT_CLICK_RESULT clickResult = serverScreenHandler.checkSlotClick( slotIndex, button, actionType, ( ServerPlayerEntity ) player );
             
             if(clickResult == SLOT_CLICK_RESULT.DENY_CLICK)
             {
-                // DO NOTHING; DONT PASS THE CLICK THROUGH
+                // DONT PASS THE CLICK THROUGH
+                ci.cancel();
             }
             else if(clickResult == SLOT_CLICK_RESULT.PASSTHROUGH_CLICK)
             {
-                // PASS THROUGH THE CLICK TO THE SCREEN HANDLER
-                this.player.currentScreenHandler.onSlotClick(slotIndex, button, actionType, player);
+                // PASS THROUGH THE CLICK TO THE SCREEN HANDLER, so do nothing
             }
             else
             {
